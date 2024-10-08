@@ -2,7 +2,7 @@ window.onload = getVillanos()
 
 function getVillanos() {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'villanos/getVillanos.php', true);
+    xhr.open('GET', 'getVillanos.php', true);
     xhr.onload = function() {
         
         if (xhr.status === 200) {
@@ -20,7 +20,7 @@ function getVillanos() {
                 // Crear y agregar imagen
                 var img = document.createElement('img');
                 var nombreFoto = villano.nombre.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-                img.src = "villanos/img/" + nombreFoto + ".jpg";
+                img.src = "img/" + nombreFoto + ".jpg";
                 div.appendChild(img);
                 
                 // Crear y agregar tabla

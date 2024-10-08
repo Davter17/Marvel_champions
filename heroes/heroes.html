@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marvel Champions - Game History</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="shortcun icon" href="../img/OIG3.XhXjnMJIZ3.jpg">
+</head>
+<body>
+
+    <nav>
+        <div><a href="../home/index.html">Home</a> </div>
+        <div><a href="../miColeccion/miColeccion.html">Mi Colección</a> </div>
+        <div><a href="../heroes/heroes.html">Héroes</a> </div>
+        <div><a href="../villanos/villanos.html">Villanos</a> </div>
+        <div><a href="../partidas/partidas.html">Partidas</a> </div>
+    </nav>
+
+    <div id="selectores">
+        <select name="coleccionSelector" id="coleccionSelector" class="selectores">
+            <option value="0">Todos los personajes</option>
+            <option value="1" selected>Solo en mi colección</option>
+        </select>
+        <select name="orden" id="orden" class="selectores">
+            <option value="0">Fecha de Aparición</option>
+            <option value="1">Más partidas</option>
+            <option value="2">Mejor porcentaje total</option>
+            <option value="3">Mejor porcentaje agresividad</option>
+            <option value="4">Mejor porcentaje justicia</option>
+            <option value="5">Mejor porcentaje liderazgo</option>
+            <option value="6">Mejor porcentaje protección</option>
+            <option value="7">Mejor porcentaje masacrismo</option>
+        </select>
+    </div>
+
+    <div id="listaPersonajes"></div>
+    
+    <script src="heroes.js"></script>
+</body>
+</html>

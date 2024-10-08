@@ -25,31 +25,38 @@ if (!isset($ordenes[$orden])) {
     $orden = 0; // Valor predeterminado si el índice no es válido
 }
 
+// Obtener el valor de inCollection desde la solicitud GET
+$inCollection = isset($_GET['inCollection']) ? intval($_GET['inCollection']) : 0;
+
 // Realizar la consulta
-$sql = $sql = " SELECT h.nombre, 
-                SUM(P.Resultado = 0) as Ganadas, 
-                SUM(p.Resultado = 1) as Perdidas,
-                SUM(P.Resultado = 0) + SUM(p.Resultado = 1) as Totales, 
-                (SUM(P.Resultado = 0))/(SUM(p.Resultado = 1 || p.Resultado = 0))*100 as Porcentaje, 
-                SUM(p.Resultado= 0 && p.Atributo=1) as agr_victoria, 
-                SUM(p.Resultado= 1 && p.Atributo=1) as agr_derrota,
-                SUM(p.Resultado= 0 && p.Atributo=2) as jus_victoria, 
-                SUM(p.Resultado= 1 && p.Atributo=2) as jus_derrota,
-                SUM(p.Resultado= 0 && p.Atributo=3) as lid_victoria, 
-                SUM(p.Resultado= 1 && p.Atributo=3) as lid_derrota,
-                SUM(p.Resultado= 0 && p.Atributo=4) as pro_victoria, 
-                SUM(p.Resultado= 1 && p.Atributo=4) as pro_derrota,
-                SUM(p.Resultado= 0 && p.Atributo=5) as ext_victoria, 
-                SUM(p.Resultado= 1 && p.Atributo=5) as ext_derrota,
-                IFNULL(SUM(p.Resultado= 0 && p.Atributo=1) / NULLIF(SUM(p.Atributo=1), 0), -1) as agr_ratio,
-                IFNULL(SUM(p.Resultado= 0 && p.Atributo=2) / NULLIF(SUM(p.Atributo=2), 0), -1) as jus_ratio,
-                IFNULL(SUM(p.Resultado= 0 && p.Atributo=3) / NULLIF(SUM(p.Atributo=3), 0), -1) as lid_ratio,
-                IFNULL(SUM(p.Resultado= 0 && p.Atributo=4) / NULLIF(SUM(p.Atributo=4), 0), -1) as pro_ratio,
-                IFNULL(SUM(p.Resultado= 0 && p.Atributo=5) / NULLIF(SUM(p.Atributo=5), 0), -1) as ext_ratio
-                FROM heroes h
-                LEFT JOIN partidas p ON h.Nombre = p.Heroe
-                GROUP BY h.Nombre 
-                ORDER BY {$ordenes[$orden]}";
+$sql = "SELECT 
+            h.ID,
+            h.nombre, 
+            h.Coleccion,
+            SUM(P.Resultado = 0) as Ganadas, 
+            SUM(p.Resultado = 1) as Perdidas,
+            SUM(P.Resultado = 0) + SUM(p.Resultado = 1) as Totales, 
+            (SUM(P.Resultado = 0))/(SUM(p.Resultado = 1 || p.Resultado = 0))*100 as Porcentaje, 
+            SUM(p.Resultado= 0 && p.Atributo=1) as agr_victoria, 
+            SUM(p.Resultado= 1 && p.Atributo=1) as agr_derrota,
+            SUM(p.Resultado= 0 && p.Atributo=2) as jus_victoria, 
+            SUM(p.Resultado= 1 && p.Atributo=2) as jus_derrota,
+            SUM(p.Resultado= 0 && p.Atributo=3) as lid_victoria, 
+            SUM(p.Resultado= 1 && p.Atributo=3) as lid_derrota,
+            SUM(p.Resultado= 0 && p.Atributo=4) as pro_victoria, 
+            SUM(p.Resultado= 1 && p.Atributo=4) as pro_derrota,
+            SUM(p.Resultado= 0 && p.Atributo=5) as ext_victoria, 
+            SUM(p.Resultado= 1 && p.Atributo=5) as ext_derrota,
+            IFNULL(SUM(p.Resultado= 0 && p.Atributo=1) / NULLIF(SUM(p.Atributo=1), 0), -1) as agr_ratio,
+            IFNULL(SUM(p.Resultado= 0 && p.Atributo=2) / NULLIF(SUM(p.Atributo=2), 0), -1) as jus_ratio,
+            IFNULL(SUM(p.Resultado= 0 && p.Atributo=3) / NULLIF(SUM(p.Atributo=3), 0), -1) as lid_ratio,
+            IFNULL(SUM(p.Resultado= 0 && p.Atributo=4) / NULLIF(SUM(p.Atributo=4), 0), -1) as pro_ratio,
+            IFNULL(SUM(p.Resultado= 0 && p.Atributo=5) / NULLIF(SUM(p.Atributo=5), 0), -1) as ext_ratio
+        FROM heroes h
+        LEFT JOIN partidas p ON h.Nombre = p.Heroe
+        WHERE (h.Coleccion = 1 AND $inCollection = 1) OR ($inCollection = 0)
+        GROUP BY h.Nombre 
+        ORDER BY {$ordenes[$orden]}";
 
 $result = $conn->query($sql);
 

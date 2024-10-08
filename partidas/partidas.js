@@ -8,7 +8,7 @@ function start(){
   
 function getHeroes() {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'heroes/getHeroes.php', true);
+    xhr.open('GET', '../heroes/getHeroes.php', true);
     xhr.onload = function() {
         if (xhr.status === 200) {
             var heroes = JSON.parse(xhr.responseText);
@@ -44,7 +44,7 @@ function getHeroes() {
 
 function getVillanos() {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'villanos/getVillanos.php', true);
+    xhr.open('GET', '../villanos/getVillanos.php', true);
     xhr.onload = function() {
         if (xhr.status === 200) {
             var villanos = JSON.parse(xhr.responseText);
@@ -80,7 +80,7 @@ function getVillanos() {
 
 function getPartidas() {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'partidas/getPartidas.php', true);
+    xhr.open('GET', 'getPartidas.php', true);
     xhr.onload = function() {
         if (xhr.status === 200) {
             var partidas = JSON.parse(xhr.responseText);
@@ -118,14 +118,14 @@ function getPartidas() {
                 div.classList.add("imageFight");
                 var img = document.createElement('img');
                 var nombreFoto = partida.Heroe.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-                img.src = "heroes/img/" + nombreFoto + ".jpg";
+                img.src = "../heroes/img/" + nombreFoto + ".jpg";
                 div.appendChild(img);
                 var img = document.createElement('img');
-                img.src = "img/vs.webp";
+                img.src = "../img/vs.webp";
                 div.appendChild(img);
                 var img = document.createElement('img');
                 var nombreFoto = partida.Villano.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-                img.src = "villanos/img/" + nombreFoto + ".jpg";
+                img.src = "../villanos/img/" + nombreFoto + ".jpg";
                 div.appendChild(img);
                 divContainer.appendChild(div)
 
@@ -137,14 +137,15 @@ function getPartidas() {
                 var div = document.createElement('div');
                 div.classList.add("iconFight");
                 var img = document.createElement('img');
-                img.src = "img/delete.webp";
-                img.title = "Eliminar partida"; 
-                img.addEventListener('click', function() {
+                img.src = "../img/delete.webp";
+                div.title = "Eliminar partida"; 
+                div.addEventListener('click', function() {
                     var confirmacion = confirm("¿Estás seguro de que deseas eliminar la partida "+ partida.Heroe+ " (" +atributoNombre[partida.Atributo]+ ") contra " + partida.Villano+  " ("+ dificultadVillano[partida.Dificultad] +")?");
                     if (confirmacion) {
                         eliminarPartida(partida.id); // Llama a la función con el ID de la partida si se confirma
                     }
                 });
+                div.style.cursor = "pointer"
                 div.appendChild(img);
                 divContainer.appendChild(div)
             });
@@ -162,7 +163,7 @@ function getPartidas() {
 
 function eliminarPartida(idPartida) {
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'partidas/eliminarPartida.php', true);
+    xhr.open('POST', 'eliminarPartida.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     xhr.onload = function() {

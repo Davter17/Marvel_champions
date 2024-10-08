@@ -86,11 +86,78 @@ select:focus {
     margin-top: 20px;
 }
 
+/* Mi Colección */
+#miColeccion {
+    width: 80%;
+    margin: auto;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; 
+}
+
+#heroesSeccion, #villanosSeccion {
+    background-color: black;
+    opacity: 0.8;
+    font-size: 25px;
+    border-radius: 20px;
+    padding: 15px;
+    margin-top: 20px;
+    width: 45%;
+    box-sizing: border-box;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column; 
+}
+
+#heroesSeccion h3, #villanosSeccion h3 {
+    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+#heroesSeccionContainer, #villanosSeccionContainer {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: flex-start;
+}
+
+#heroesSeccionContainer div, #villanosSeccionContainer div {
+    flex: 1 1 21%; 
+    max-width: 21%;
+    margin: 8px;
+    text-align: center;
+}
+
+.img_coleccion {
+    width: 100%; 
+    height: auto;
+    border-radius: 10px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto; 
+}
+
 /*Héroes y Villanos*/
-#orden{
-    
-    width: 260px;
-    margin-left: 74%;
+
+#selectores {
+    display: flex;
+    justify-content: flex-end;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.selectores{
+    margin-left: 20px; 
+    padding: 5px; 
+    background-color: black; 
+    color: white; 
+    border: 1px solid white; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    width: auto;
     display: flex;
     justify-content: end;
     margin-top: 20px;
@@ -102,6 +169,7 @@ select:focus {
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 40px;
+    margin-top: 20px;
 }
 
 .cardListado{
@@ -150,6 +218,10 @@ select:focus {
 
 .trResultados td:last-child {
     background-color: red; 
+}
+
+.trColoreada {
+    height: 46px !important;
 }
 
 .trColoreada td:nth-child(odd) {
@@ -287,6 +359,12 @@ select:focus {
     align-items: center;
 }
 
+.iconFight{
+    height: 100%;
+    background-color: black;
+    border-radius: 10px;
+}
+
 .partidaListado > div {
     display: flex;
     justify-content: center;
@@ -328,7 +406,27 @@ select:focus {
 
 
 /* Responsive adjustments */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+
+    #miColeccion {
+        flex-direction: column; /* Cambia la disposición a columna en pantallas pequeñas */
+    }
+
+    #heroesSeccion, #villanosSeccion {
+        width: 100%; /* Las secciones ahora ocuparán el 100% del ancho */
+        margin-top: 20px;
+    }
+
+    #heroesSeccion h3, #villanosSeccion h3 {
+        font-size: 22px; /* Ajusta el tamaño del texto para pantallas más pequeñas */
+    }
+
+    #heroesSeccionContainer div, #villanosSeccionContainer div {
+        flex: 1 1 45%; /* En pantallas pequeñas, cada imagen ocupará hasta el 45% del espacio */
+        max-width: 45%;
+        margin: 10px auto; /* Centramos los elementos */
+    }
+
     #partidas_nueva form {
         flex-direction: column;
     }
