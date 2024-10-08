@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marvel Champions - Game History</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcun icon" href="img/OIG3.XhXjnMJIZ3.jpg">
+</head>
+<body>
+
+    <nav>
+        <div><a href="index.html">Home</a> </div>
+        <div><a href="heroes.html">Héroes</a> </div>
+        <div><a href="villanos.html">Villanos</a> </div>
+        <div><a href="partidas.html">Partidas</a> </div>
+    </nav>
+
+    <div id="partidas_nueva">
+        <h2>Guardar partida</h2>
+        <form action="anadirPartidas.php" method="POST">
+            <label for="partida_nueva_heroe">Héroe:</label>
+            <select name="partida_nueva_heroe" id="partida_nueva_heroe" required></select>
+
+            <label for="partida_nueva_atributo">Atributo:</label>
+            <select name="partida_nueva_atributo" id="partida_nueva_atributo" required>
+                <option value="" selected disabled hidden></option>
+                <option value="1">Agresividad</option>
+                <option value="2">Justicia</option>
+                <option value="3">Liderazgo</option>
+                <option value="4">Protección</option>
+                <option value="5">Masacrismo</option>
+            </select>
+
+            <label for="partida_nueva_villano">Villano:</label>
+            <select name="partida_nueva_villano" id="partida_nueva_villano" required></select>            
+            
+            <label for="partida_nueva_dificultad">Dificultad:</label>
+            <select name="partida_nueva_dificultad" id="partida_nueva_dificultad" required>
+                <option value="" selected disabled hidden></option>
+                <option value="0">Normal</option>
+                <option value="1">Experto</option>
+            </select>
+            
+            <label for="partida_nueva_resultado">Resultado:</label>
+            <select name="partida_nueva_resultado" id="partida_nueva_resultado" required>
+                <option value="" selected disabled hidden></option>
+                <option value="0">Victoria</option>
+                <option value="1">Derrota</option>
+            </select>
+
+            <input type="submit" value="Añadir partida" id="partida_nueva_submit">
+
+        </form>
+    </div>
+
+    <div id="partidas_nueva_excel">
+        <form action="procesar_excel.php" method="post" enctype="multipart/form-data">
+            <div>
+                <span>O bien, añade varias partidas descargando este archivo:</span>
+                <a href="MarvelChampionsPartidas.xlsx" download="MarvelChampionsPartidas.xlsx">
+                    <button type="button">Descargar</button>
+                </a>
+            </div>
+            <div>
+                <span>Y súbelo completado aquí:</span>
+                <input type="file" name="excel_file" accept=".xls,.xlsx" required>
+            </div>
+            <input type="submit" value="Subir y procesar">
+        </form>
+    </div>
+    
+
+    <div id="partidas_lista">
+
+    </div>
+    <script src="partidas/partidas.js"></script>
+</body>
+</html>

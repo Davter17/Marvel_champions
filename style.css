@@ -1,0 +1,336 @@
+
+
+/*Estilos generales*/
+body{
+    background-image: url("img/fondo.avif");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+nav{
+    display: flex;
+    width: 80%;
+    justify-content: space-around;
+    margin: auto;
+    background-color: black;
+    color: white;
+    height: 50px;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+nav div{
+    width: 25%;
+    font-size: 20px;
+}
+
+nav div:first-child {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+nav div:last-child {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+nav div a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    width: 100%;
+    height: 100%;
+}
+
+
+nav div:hover{
+    background-color: white;
+    color: black;
+    font-size: 22px;
+    & a{
+        color: black
+    }
+}
+
+label {
+    font-size: 18px;
+    margin-right: 10px;
+    color: #ddd;
+    width: 60px;
+}
+
+select {
+    width: 180px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #222;
+    color: white;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+select:focus {
+    background-color: #444;
+}
+
+/*Home*/
+#home_div{
+    background-color: black;
+    color: white;
+    opacity: 0.8;
+    width: 80%;
+    margin: auto;
+    font-size: 25px;
+    border-radius: 20px;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+/*Héroes y Villanos*/
+#orden{
+    
+    width: 260px;
+    margin-left: 74%;
+    display: flex;
+    justify-content: end;
+    margin-top: 20px;
+}
+
+#listaPersonajes{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.cardListado{
+    width: 48%;
+    display: flex;
+    margin: 10px;
+    padding: 5px;
+}
+
+.cardListado img{
+    border: 1px solid white;
+    width: 200px;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+.cardListado table {
+    margin: auto;
+    background-color: black;
+    color: white;
+    width: 100%;
+    border-collapse: collapse;
+    height: 100%;
+}
+
+.cardListado th, .cardListado td {
+    border: 1px solid white; 
+    padding: 8px; 
+    text-align: center;
+    width: auto;
+}
+
+.cardListado th{
+    font-size: 20px;
+} 
+
+.trResultados td:first-child {
+    background-color: green; 
+}
+
+.trResultados td:nth-child(2) {
+    background-color: yellow;
+    color: black;
+    font-size: 20px;
+}
+
+.trResultados td:last-child {
+    background-color: red; 
+}
+
+.trColoreada td:nth-child(odd) {
+    background-color: green; 
+}
+.trColoreada td:nth-child(even) {
+    background-color: red; 
+}
+
+.cardListado table {
+    table-layout: fixed;
+    width: 100%;
+}
+/* Partidas */
+#partidas_nueva {
+    width: 80%;
+    margin: 20px auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#partidas_nueva h2{
+    text-align: center;
+    margin-top: 0;
+}
+
+#partidas_nueva form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+#partidas_nueva input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #1e90ff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    margin-top: 4px;
+    transition: background-color 0.3s ease;
+}
+
+#partidas_nueva input[type="submit"]:hover {
+    background-color: #007acc;
+}
+
+#partidas_nueva form > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#partidas_nueva_excel {
+    width: 80%;
+    margin: 20px auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#partidas_nueva_excel form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+#partidas_nueva_excel span {
+    font-size: 16px;
+    color: #ddd;
+}
+
+#partidas_nueva_excel input[type="file"] {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #222;
+    color: white;
+    border: 1px solid #ccc;
+    transition: background-color 0.3s ease;
+}
+
+#partidas_nueva_excel input[type="file"]:focus {
+    background-color: #444;
+}
+
+#partidas_nueva_excel input[type="submit"],
+#partidas_nueva_excel button {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #1e90ff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+#partidas_nueva_excel input[type="submit"]:hover,
+#partidas_nueva_excel button:hover {
+    background-color: #007acc;
+}
+
+#partidas_lista {
+    padding: 20px;
+    margin: auto;
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.partidaListado {
+    width: 48%;
+    padding: 5px;
+    background-color: black;
+    opacity: 0.8;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    border: 4px black solid;
+    border-radius: 20px;
+    margin: 5px 0;
+    align-items: center;
+}
+
+.partidaListado > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.partidaListado > div:first-child, /* Héroe */
+.partidaListado > div:nth-child(3) { /* Villano */
+    width: 35%; /* Ancho fijo para héroe y villano */
+    text-align: center;
+    overflow: hidden; /* Esconde el texto que se desborda */
+    text-overflow: ellipsis; /* Añade puntos suspensivos si el texto es muy largo */
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+}
+
+.imageFight {
+    width: 30%; /* Espacio consistente para las imágenes */
+    display: flex;
+    justify-content: space-between;
+}
+
+.imageFight img {
+    width: 50px;
+    margin-left: 4px;
+}
+
+.iconFight {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+}
+
+.iconFight img {
+    width: 30px;
+    margin-left: 4px;
+    cursor: pointer;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    #partidas_nueva form {
+        flex-direction: column;
+    }
+}
+
