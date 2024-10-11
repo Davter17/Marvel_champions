@@ -19,7 +19,7 @@ function getVillanos() {
 
                 // Crear y agregar imagen
                 var img = document.createElement('img');
-                var nombreFoto = villano.nombre.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+                var nombreFoto = villano.nombre.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\//g, '');    
                 img.src = "img/" + nombreFoto + ".jpg";
                 div.appendChild(img);
                 

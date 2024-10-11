@@ -22,10 +22,16 @@ function getHeroes() {
                 var divContainer = document.createElement("div");
 
                 var img = document.createElement('img');
-                var nombreFoto = heroe.nombre.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+                var nombreFoto = heroe.nombre.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\//g, '');          
                 img.src = "../heroes/img/" + nombreFoto + ".jpg";
                 img.classList.add("img_coleccion");
                 img.title= heroe.nombre
+                
+                console.log(heroe.nombre)
+                if (heroe.nombre == "SP//dr"){
+                    console.log("a")
+                    console.log(nombreFoto)
+                }
                 // Inicializar el borde según el estado de la colección
                 if (heroe.Coleccion == 1) {
                     img.style.border = "4px green solid";
@@ -79,7 +85,7 @@ function getVillanos() {
                 var divContainer = document.createElement("div");
 
                 var img = document.createElement('img');
-                var nombreFoto = villano.nombre.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+                var nombreFoto = villano.nombre.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\//g, '');                        
                 img.src = "../villanos/img/" + nombreFoto + ".jpg";
                 img.classList.add("img_coleccion");
                 img.title= villano.nombre

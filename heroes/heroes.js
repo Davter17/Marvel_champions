@@ -36,7 +36,7 @@ function getHeroes(order, inCollection) {
 
                 // Crear y agregar imagen
                 var img = document.createElement('img');
-                var nombreFoto = hero.nombre.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+                var nombreFoto = hero.nombre.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\//g, '');    
                 img.src = "img/" + nombreFoto + ".jpg";
                 div.appendChild(img);
                 

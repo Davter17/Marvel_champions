@@ -8,7 +8,12 @@ function start(){
   
 function getHeroes() {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', '../heroes/getHeroes.php', true);
+    
+    // Aquí indicamos que solo queremos los héroes que están en la colección
+    var inCollection = 1; // Valor fijo para que solo se filtren los héroes en tu colección
+
+    xhr.open('GET', '../heroes/getHeroes.php?inCollection=' + inCollection, true);
+    
     xhr.onload = function() {
         if (xhr.status === 200) {
             var heroes = JSON.parse(xhr.responseText);
@@ -39,8 +44,13 @@ function getHeroes() {
         }
     };
 
+    xhr.onerror = function() {
+        console.error('Error de red');
+    };
+
     xhr.send();
 }
+
 
 function getVillanos() {
     var xhr = new XMLHttpRequest();
@@ -117,14 +127,15 @@ function getPartidas() {
                 var div = document.createElement('div');
                 div.classList.add("imageFight");
                 var img = document.createElement('img');
-                var nombreFoto = partida.Heroe.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+                
+                var nombreFoto = partida.Heroe.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\//g, '');    
                 img.src = "../heroes/img/" + nombreFoto + ".jpg";
                 div.appendChild(img);
                 var img = document.createElement('img');
                 img.src = "../img/vs.webp";
                 div.appendChild(img);
                 var img = document.createElement('img');
-                var nombreFoto = partida.Villano.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+                var nombreFoto = partida.Villano.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\//g, '');    
                 img.src = "../villanos/img/" + nombreFoto + ".jpg";
                 div.appendChild(img);
                 divContainer.appendChild(div)
